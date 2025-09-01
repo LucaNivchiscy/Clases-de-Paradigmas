@@ -170,3 +170,89 @@ const result = fns.map( ({name,fn} ) =>{
 });
 
 console.log(result)
+
+
+
+//! Actividad N2 
+//! Ejercicio 1
+//? Teniendo en cuenta la siguiente lista:
+const nums = [4, 1, 2, 4, 5, 8, 7, 6, 9, 10];
+
+const suma1 = nums.reduce((acc, curr)=> acc + curr,0);
+
+console.log("Suma total: " + suma1);
+
+
+//! Ejercicio 2
+//? Calcular la suma de los cuadrados de los numeros impares
+
+const sumaImpares = nums.filter(n => n%2===1).map(n => n*n).reduce((acc, curr) => acc + curr,0);
+
+console.log("Suma de cuadrados de impares: " + sumaImpares);
+
+//! Ejercicio 3
+//? Teniendo en cuenta la siguiente lista de frases, deberas encontrar la frase mas larga.
+
+const frases = [
+    "La tecnología cambia el mundo",
+    "Programar es crear soluciones",
+    "Aprender haciendo es aprender mejor",
+    "JavaScript es flexible y poderoso"
+];
+
+const fraseMasLarga = frases.reduce((acc,curr)=> acc.length >= curr.length ? acc : curr,"");
+
+console.log("Frase más larga: " + fraseMasLarga);
+
+//! Ejercicio 4
+//?  Obtener del array “nums“, el mínimo y máximo de la lista en una sola pasada , retornando un objeto {min, max} 
+
+
+const minMax = nums.reduce((acc, curr) => {
+    if (curr < acc.min) {
+        acc.min = curr;
+    }
+    if (curr > acc.max) {
+        acc.max = curr;
+    }
+    return acc;
+}, { min: Infinity, max: -Infinity });
+
+console.log("Mínimo: " + minMax.min);
+console.log("Máximo: " + minMax.max);
+
+//! Ejercicio 5
+//? Dada una lista de notas {curso, nota}, devolvé {curso: promedio} sin recorrer dos veces (acumulá sumas y conteos en el mismo reduce).Entrada de ejemplo:
+
+const Lista = [
+    {c:"A",n:8},
+    {c:"B",n:6},
+    {c:"A",n:10}
+]; //* Salida esperada: { A:9, B:6 } 
+
+const notas = Lista.reduce((acc, curr)=> {
+    curr.c === "A" ? (acc.A.suma += curr.n, acc.A.count += 1) : (acc.B.suma += curr.n, acc.B.count += 1);
+    return acc;
+}, {A:{suma: 0, count: 0}, B:{suma: 0, count: 0}})
+console.log(notas);
+const promedios = {
+    A: notas.A.suma / notas.A.count,
+    B: notas.B.suma / notas.B.count
+};
+console.log(promedios);
+
+//! Ejercicio 6
+//? Dada el numero de DNI de una persona, se pide calcular la suma de sus numeros
+const dni = "20385978";
+
+const sumaDni = dni.split("").reduce((acc, cur) => acc + parseInt(cur), 0);
+console.log("Suma de los números del DNI: " + sumaDni);
+
+//! Ejercicio 7
+//? dado el siguiente texto:
+const texto = "En la educación, el docente propone un proyecto breve: con tecnología y datos, las estudiantes y los estudiantes analizan un problema real. El docente guía la práctica, revisan el código, miden resultados y discuten una evaluación formativa. El proyecto se reitera: más datos, más código, mejor aprendizaje. Así, en la comunidad educativa, el docente acompaña, los estudiantes participan y la tecnología potencia la práctica y la evaluación";
+
+const textArr = texto.split(" ");
+console.log("cantidad de palabras:" + textArr.length);
+const espacios = [...texto].reduce((acc, curr) => curr === " " ? acc + 1 : acc, 0);
+console.log("Cantidad de espacios: " + espacios);
