@@ -178,7 +178,7 @@ console.log('Suma total: ' + suma1)
 // ? Calcular la suma de los cuadrados de los numeros impares
 
 const sumaImpares = nums.filter(n => n % 2 === 1).map(n => n * n).reduce((acc, curr) => acc + curr, 0)
-const sumaImparesV2 = nums.reduce((acc, curr) => (curr %2 ? acc + curr * curr : acc), 0)
+const sumaImparesV2 = nums.reduce((acc, curr) => (curr % 2 ? acc + curr * curr : acc), 0)
 
 console.log('Suma de cuadrados de impares: ' + sumaImpares)
 
