@@ -254,5 +254,6 @@ const texto = "En la educación, el docente propone un proyecto breve: con tecno
 
 const textArr = texto.split(" ");
 console.log("cantidad de palabras:" + textArr.length);
+console.log(textArr)
 const espacios = [...texto].reduce((acc, curr) => curr === " " ? acc + 1 : acc, 0);
 console.log("Cantidad de espacios: " + espacios);
