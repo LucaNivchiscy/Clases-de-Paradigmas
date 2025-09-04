@@ -233,11 +233,23 @@ const promedios = {
 }
 console.log(promedios)
 
+//? Otra version
+const notasV2 = Lista.reduce((acc, {c,n}) =>{
+        if (!acc[c]) acc[c] = { sum:0, count:0, promedio:0};
+        console.log("aca" , acc)
+        acc[c].sum +=n;
+        acc[c].count +=1;
+        acc[c].promedio = acc[c].sum / acc[c].count;
+
+        return acc;
+    }, {}
+);
+console.log(notasV2)
 //! Ejercicio 6
 // ? Dada el numero de DNI de una persona, se pide calcular la suma de sus numeros
 const dni = '20385978'
 
-const sumaDni = dni.split('').reduce((acc, cur) => acc + parseInt(cur), 0)
+const sumaDni = [...dni].reduce((acc, cur) => acc + parseInt(cur), 0)
 console.log('Suma de los números del DNI: ' + sumaDni)
 
 //! Ejercicio 7
